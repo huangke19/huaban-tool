@@ -1,5 +1,5 @@
-#!/usr/bin/env python
-# -*- coding: utf8 -*-
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
 import sys
 
 __version__ = "1.0"
@@ -33,8 +33,12 @@ logging.basicConfig(level=logging.INFO,
 debug = True
 request = requests.Session()
 request.verify = True
-request.headers.update({'X-Request': 'JSON', 'X-Requested-With': 'XMLHttpRequest', 'Referer': BASE_URL,
-                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36'})
+request.headers.update({
+    'X-Request': 'JSON', 'X-Requested-With': 'XMLHttpRequest',
+    'Referer': BASE_URL,
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36'
+})
+
 user_agent_list = [
     "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36",
     "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36",
