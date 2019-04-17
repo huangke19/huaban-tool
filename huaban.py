@@ -24,11 +24,11 @@ SLEEP_TIME = 1
 
 now_dir = os.path.dirname(os.path.realpath(sys.argv[0]))
 
-logging.basicConfig(level=logging.INFO,
-                    format='[ %(levelname)s ] %(asctime)s %(filename)s:%(threadName)s:%(process)d:%(lineno)d %(message)s',
-                    datefmt='%Y-%m-%d %H:%M:%S',
-                    filename='huaban.log',
-                    filemode='a')
+# logging.basicConfig(level=logging.INFO,
+#                     format='[ %(levelname)s ] %(asctime)s %(filename)s:%(threadName)s:%(process)d:%(lineno)d %(message)s',
+#                     datefmt='%Y-%m-%d %H:%M:%S',
+#                     filename='huaban.log',
+#                     filemode='a')
 
 debug = True
 request = requests.Session()
@@ -231,7 +231,8 @@ def _crawl_user(user_id):
 
 
 def main():
-    act = input("抓取画板请选输入1，抓取用户请输入2 \n请选择: ")
+    # act = input("抓取画板请选输入1，抓取用户请输入2 \n请选择: ")
+    act = '1'
 
     if act == '1':
         action = "getBoard"
