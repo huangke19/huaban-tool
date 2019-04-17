@@ -2,10 +2,10 @@
 # -*- coding: utf8 -*-
 import sys
 
-__version__ = "5.0.1"
+__version__ = "1.0"
 __author__ = "kwell"
-__doc__ = "https://blog.saintic.com/blog/204.html"
 
+# 标准库
 import logging
 import os
 from multiprocessing import Pool as ProcessPool
@@ -13,10 +13,12 @@ from multiprocessing.dummy import Pool as ThreadPool
 from random import choice
 from time import sleep
 
+# 第三方库
 import requests
 
 # 花瓣网域名，目前应该设置为huaban.com，可使用http或https协议。
 BASE_URL = 'https://huaban.com'
+
 # 设置下载短暂停止时间，单位：秒
 SLEEP_TIME = 1
 
@@ -93,7 +95,7 @@ def _download_img(pin, retry=True):
     if pin and isinstance(pin, dict) and "pin_id" in pin and "suffix" in pin and "key" in pin and "board_id" in pin:
         imgurl = "http://hbimg.b0.upaiyun.com/{}".format(pin["key"])
         imgdir = pin['board_id']
-        imgname = os.path.join(now_dir + '/'+'boards/' + imgdir, '{}.{}'.format(pin["pin_id"], pin["suffix"]))
+        imgname = os.path.join(now_dir + '/' + 'boards/' + imgdir, '{}.{}'.format(pin["pin_id"], pin["suffix"]))
         if os.path.isfile(imgname):
             if debug:
                 printcolor("Skip downloaded images: %s" % imgname)
@@ -230,8 +232,10 @@ def main():
     if act == '1':
         action = "getBoard"
         board_id = input("请输入要抓取的画板编号: ")
+        user_id = ''
     elif act == '2':
         action = "getUser"
+        board_id = ''
         user_id = input("请输入要抓取的用户编号: ")
     else:
         action = ''
@@ -280,16 +284,8 @@ def main():
     else:
         print("something wrong")
 
+    os.system('open .')
+
 
 if __name__ == "__main__":
-    # import argparse
-    # parser = argparse.ArgumentParser()
-    # parser.add_argument("-a", "--action", default="getBoard", help="脚本动作 -> 1. getBoard: 抓取单画板(默认); 2. getUser: 抓取单用户")
-    # parser.add_argument("-u", "--user", help="花瓣网账号-手机/邮箱")
-    # parser.add_argument("-p", "--password", help="花瓣网账号对应密码")
-    # parser.add_argument("-v", "--version", help="查看版本号", action='store_true')
-    # parser.add_argument("--board_id", help="花瓣网单个画板id, action=getBoard时使用")
-    # parser.add_argument("--user_id", help="花瓣网单个用户id, action=getUser时使用")
     main()
-
-    os.system('open .')
